@@ -30,7 +30,6 @@
             ctx.font = text.fontWeight + " " + text.fontSize + 'px ' + text.fontFamily;
             ctx.textAlign = text.align;
             ctx.fillStyle = text.color;
-//            var awards = ["一等奖", "二等奖", "三等奖", "谢谢！"];
             this.award = this.options.awards[(Math.random() * this.options.awards.length) | 0]; //随机抽奖
             ctx.fillText(this.award, this.width / 2, this.height / 2 + text.fontSize / 2);
         },
@@ -52,7 +51,7 @@
                     var options = that.options;
                     ctx.beginPath();
                     var gradient = ctx.createRadialGradient(x, y, 0, x, y, options.radius);
-                    // 其实这边的颜色值是可以随便写的，因为都会变成白色，重要的是透明度
+                    // 其实这边的颜色值是可以随便写的，因为都会变成透明，重要的是透明度
                     gradient.addColorStop(0, "rgba(0, 0, 0, 0.5)");
                     gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
                     ctx.fillStyle = gradient;
@@ -73,7 +72,7 @@
         result: function () {
             var textWidth = this.options.text.fontSize * this.award.length;
             var textHeight = this.options.text.fontSize;
-            // 获取文字部分的像素，这样可以根据刮开文字部分的百分比来提示结果，比如说在刮开50%的时候提示刮奖结果
+            // 获取文字部分的像素，这样可以根据刮开文字的部分占全部文字部分的百分比来提示结果，比如说在刮开80%的时候提示刮奖结果
             var imgData = this.upCtx.getImageData(this.width / 2 - textWidth / 2, this.height / 2 - textHeight / 2, textWidth, textHeight);
             var pixelsArr = imgData.data;
             var transPixelsArr = [];
