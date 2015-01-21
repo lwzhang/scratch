@@ -22,7 +22,7 @@
         init: function () {
             this.drawText();
             this.drawMask();
-            this.event();
+            this.addEvent();
         },
         drawText: function () {
             var ctx = this.underCtx;
@@ -39,7 +39,7 @@
             ctx.fillRect(0, 0, this.width, this.height);
             ctx.globalCompositeOperation = 'destination-out';
         },
-        event: function () {
+        addEvent: function () {
             var that = this;
             var upCanvas = this.upCanvas;
             var callback1, callback2, callback3;
@@ -52,7 +52,7 @@
                     ctx.beginPath();
                     var gradient = ctx.createRadialGradient(x, y, 0, x, y, options.radius);
                     // 其实这边的颜色值是可以随便写的，因为都会变成透明，重要的是透明度
-                    gradient.addColorStop(0, "rgba(0, 0, 0, 0.5)");
+                    gradient.addColorStop(0, "rgba(255, 255, 255, 0.5)");
                     gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
                     ctx.fillStyle = gradient;
                     ctx.arc(x, y, options.radius, 0, Math.PI * 2, true);
@@ -89,18 +89,5 @@
         }
     };
 
-    // 可能变化的值放在options中，方便修改
-    var options = {
-        text: {
-            fontWeight: "bold",
-            fontSize: 30,
-            fontFamily: "Arial",
-            align: "center",
-            color: '#F60'
-        },
-        maskColor: "red",
-        radius: 30,
-        awards: ["一等奖", "二等奖", "三等奖", "谢谢！"]
-    };
-    new Scratch(options).init();
+    win.Scratch = Scratch;
 }(window, document));

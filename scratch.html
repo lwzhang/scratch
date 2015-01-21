@@ -5,8 +5,25 @@
 	<title>刮刮乐</title>
 </head>
 <body>
-    <canvas id="underCanvas" width=300 height=300 style="border: 1px solid grey; position: absolute; left: 0;top: 0;"></canvas>
-    <canvas id="upCanvas" width=300 height=300 style="border: 1px solid grey; position: absolute; left: 0; top: 0;"></canvas>
+    <canvas id="underCanvas" width=300 height=300 style="position: absolute; left: 0;top: 0;"></canvas>
+    <canvas id="upCanvas" width=300 height=300 style="position: absolute; left: 0; top: 0;"></canvas>
     <script src="./scratch.js"></script>
+    <script>
+        // 可能变化的值放在options中，方便修改
+        var options = {
+            text: {
+                fontWeight: "bold",
+                fontSize: 30,
+                fontFamily: "Arial",
+                align: "center",
+                color: '#F60'
+            },
+            maskColor: "red",
+            radius: 20,
+            awards: ["一等奖", "二等奖", "三等奖", "谢谢！"]
+        };
+
+        new Scratch(options).init();
+    </script>
 </body>
 </html>
